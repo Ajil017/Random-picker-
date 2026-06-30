@@ -12,7 +12,7 @@ An ultra-sleek, high-fidelity React + Vite web application custom-built for the 
 ## ✨ Features
 
 *   **🔮 Interactive Mystery Draw:** Instead of a basic list shuffle, teams select their group by choosing from 4 interactive mystery boxes featuring cinematic reveal animations.
-*   **⛓️ Pair Sync Protocol (Smart Constraint):** Special algorithmic logic guarantees that specific rival/partner teams (**"SYNTAX"** and **"Techmates"**) are placed in the same group, while all other assignments remain perfectly randomized. This protocol can be dynamically enabled or disabled via a visual toggle switch in the UI.
+*   **⛓️ Pair Sync Protocol (Smart Constraint):** Special algorithmic logic guarantees that specific rival/partner teams (**"Team1"** and **"Team2"**) are placed in the same group, for example here take (**"Syntax"** and **"Techmates"**), while all other assignments remain perfectly randomized. This protocol can be dynamically enabled or disabled via a visual toggle switch in the UI.
 *   **⚡ Two Modes of Execution:**
     *   *Interactive Selection:* Step-by-step selection for live projection and high suspense.
     *   *Instant Result:* Instantaneous calculations and immediate final groupings.
