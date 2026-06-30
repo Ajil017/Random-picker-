@@ -69,7 +69,7 @@ if (actualPair.length === 2) {
   }
 }
 ```
-![Project Preview](./images/exodus home.png)
+![Project Preview](./images/exodushome.png)
 ---
 
 ## 🚀 Getting Started
