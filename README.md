@@ -69,9 +69,35 @@ if (actualPair.length === 2) {
   }
 }
 ```
-![Project Preview](./images/exodushome.png)
 ---
 
+![Project Preview](./images/exodushome.png)
+
+---
+
+---
+
+![Project Preview](./images/exodusprocesses.png)
+
+---
+
+---
+
+![Project Preview](./images/exoduspicker.png)
+
+---
+
+---
+
+![Project Preview](./images/exodusgroups.png)
+
+---
+
+---
+
+![Project Preview](./images/exodusfinal.png)
+
+---
 ## 🚀 Getting Started
 
 ### 📋 Prerequisites
