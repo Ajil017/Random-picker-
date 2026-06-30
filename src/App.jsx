@@ -62,6 +62,7 @@ const App = () => {
   const [shuffledTeamList, setShuffledTeamList] = useState([]);
   const [currentlySelectingTeam, setCurrentlySelectingTeam] = useState(null);
   const [isRevealing, setIsRevealing] = useState(false);
+  const [isPairSyncEnabled, setIsPairSyncEnabled] = useState(true);
 
   const resultsRef = useRef(null);
 
@@ -84,7 +85,7 @@ const App = () => {
     let groups = [[], [], [], []];
     const pairGrpIdx = Math.floor(Math.random() * 4);
     
-    if (actualPair.length === 2) {
+    if (isPairSyncEnabled && actualPair.length === 2) {
       groups[pairGrpIdx].push(...actualPair);
       groups[pairGrpIdx].push(others.pop(), others.pop());
       for (let i = 0; i < 4; i++) {
@@ -214,6 +215,23 @@ const App = () => {
               </div>
             )}
 
+            <div className="settings-panel">
+              <div className="settings-toggle">
+                <div style={{ textAlign: 'left' }}>
+                  <div className="toggle-label">Pair Sync Protocol</div>
+                  <div className="toggle-desc">Force "SYNTAX" and "Techmates" into the same group</div>
+                </div>
+              </div>
+              <label className="switch">
+                <input 
+                  type="checkbox" 
+                  checked={isPairSyncEnabled} 
+                  onChange={(e) => setIsPairSyncEnabled(e.target.checked)} 
+                />
+                <span className="slider"></span>
+              </label>
+            </div>
+
             <div className="button-grid">
               <button onClick={quickGenerate} className="btn btn-secondary-outline">
                 <Zap className="btn-icon" size={24} />
@@ -267,8 +285,12 @@ const App = () => {
               <h2 className="reveal-title">Select a team to reveal their group</h2>
               <div className="status-pills">
                  <div className="pill">
-                    <Lock size={14} /> Synced Protocol: Active
-                 </div>
+                     {isPairSyncEnabled ? (
+                       <><Lock size={14} /> Synced Protocol: Active</>
+                     ) : (
+                       <><Eye size={14} /> Synced Protocol: Inactive</>
+                     )}
+                  </div>
                  <div className="pill">
                     <Target size={14} /> {revealedTeams.size} / 16 Teams Assigned
                  </div>
@@ -354,7 +376,7 @@ const App = () => {
          </div>
          <div className="footer-labels">
              <span>Mystery Reveal</span>
-             <span>Pair Sync: Active</span>
+             <span>Pair Sync: {isPairSyncEnabled ? 'Active' : 'Inactive'}</span>
          </div>
       </footer>
 
@@ -643,6 +665,85 @@ const App = () => {
         .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
         .animate-slide-up { animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .animate-zoom-in { animation: zoomIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+        .settings-panel {
+          background: rgba(0, 0, 0, 0.3);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: 24px;
+          padding: 16px 24px;
+          margin-bottom: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .settings-toggle {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .toggle-label {
+          font-weight: 700;
+          font-size: 14px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .toggle-desc {
+          font-size: 11px;
+          opacity: 0.6;
+          margin-top: 2px;
+        }
+
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 52px;
+          height: 28px;
+          flex-shrink: 0;
+        }
+
+        .switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(255, 255, 255, 0.1);
+          transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
+          border: 2px solid rgba(245, 230, 200, 0.3);
+          border-radius: 34px;
+        }
+
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 18px;
+          width: 18px;
+          left: 3px;
+          bottom: 3px;
+          background-color: var(--secondary);
+          transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
+          border-radius: 50%;
+        }
+
+        input:checked + .slider {
+          background-color: rgba(0, 0, 0, 0.4);
+          border-color: var(--secondary);
+        }
+
+        input:checked + .slider:before {
+          transform: translateX(24px);
+          background-color: #00ff66;
+        }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
