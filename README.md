@@ -69,11 +69,10 @@ if (actualPair.length === 2) {
   }
 }
 ```
+### Screenshots:
 ---
 
 ![Project Preview](./images/exodushome.png)
-
----
 
 ---
 
@@ -81,17 +80,11 @@ if (actualPair.length === 2) {
 
 ---
 
----
-
 ![Project Preview](./images/exoduspicker.png)
 
 ---
 
----
-
 ![Project Preview](./images/exodusgroups.png)
-
----
 
 ---
 
