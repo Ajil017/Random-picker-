@@ -41,7 +41,7 @@ The randomizer uses a custom sorting pipeline. To ensure the two special teams a
 
 ```mermaid
 graph TD
-    A[Start Selection] --> B{Are SYNTAX and Techmates in roster?}
+    A[Start Selection] --> B{Are Team1 and Team2 in roster?}
     B -- Yes --> C[Isolate pair & select 1 of 4 groups randomly]
     C --> D[Pull 2 random teams to fill their group]
     D --> E[Distribute remaining 12 teams into other 3 groups]
