@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-   base: '/random/', // This MUST match your GitHub repository name
+   base: '/Random-picker-/', // This MUST match your GitHub repository name
 })
